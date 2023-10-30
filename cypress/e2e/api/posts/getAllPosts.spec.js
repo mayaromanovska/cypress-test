@@ -9,7 +9,10 @@ describe("Posts", () => {
 
     cy.get("@allPosts").its("status").should("equal", 200);
     cy.get("@allPosts").its("body").should("have.length", 100);
-    cy.get("@allPosts").its("body[0].id").should("equal", firstPostID);
-    cy.get("@allPosts").its("body[99].id").should("equal", lastPostID);
+    for (let i = 0; i < 100; i++) {
+      cy.get("@allPosts")
+        .its(`body[${i}]`)
+        .should("have.keys", ["userId", "id", "title", "body"]);
+    }
   });
 });
