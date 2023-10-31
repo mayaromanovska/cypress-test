@@ -36,6 +36,7 @@
 //   }
 // }
 
+import '@bahmutov/cy-api';
 
 Cypress.Commands.add('login', function(email, password, rememberMe) {
   cy.visit("auth/login");
